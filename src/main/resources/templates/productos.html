@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Productos</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+    <form th:object="${product}" th:action="@{/validar}" method="post">
+        <h1 class="m-2">Seleccione un producto</h1>
+        <div class="form-group">
+            <th>
+                <select th:field="*{id}">
+                    <option th:each="p : ${products}" th:value="${p.id}" th:text="${p.nombre}"></option>
+                </select>
+            </th>
+        </div>
+        <div class="form-group">
+            <input type="text" th:field="*{cantidad}">
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Validar">
+        </div>
+    </form>
+</body>
+</html>
